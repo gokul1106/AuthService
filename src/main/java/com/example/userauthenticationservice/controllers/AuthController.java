@@ -6,9 +6,11 @@ import com.example.userauthenticationservice.Dto.SignupRequestDto;
 import com.example.userauthenticationservice.Dto.UserDto;
 import com.example.userauthenticationservice.Services.AuthService;
 import com.example.userauthenticationservice.model.User;
+import org.antlr.v4.runtime.misc.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +35,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<UserDto> login(@RequestBody LoginRequestDto requestDto){
-        return  null;
+        try{
+            Pair<MultiValueMap<String,String>,User> pair = authService.login(requestDto.getEmail(),requestDto.getPassword());
+            return new ResponseEntity<>(getUserDto(pair.b), pair.a, HttpStatus.OK);
+        }
+        catch (Exception ex){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/logout")
