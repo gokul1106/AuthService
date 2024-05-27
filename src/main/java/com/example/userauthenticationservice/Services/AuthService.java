@@ -5,6 +5,9 @@ import com.example.userauthenticationservice.Repositories.UserRepository;
 import com.example.userauthenticationservice.model.Session;
 import com.example.userauthenticationservice.model.SessionState;
 import com.example.userauthenticationservice.model.User;
+import com.mysql.cj.log.Log;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.MacAlgorithm;
 import org.antlr.v4.runtime.misc.Pair;
@@ -30,6 +33,8 @@ public class AuthService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private SessionRepository sessionRepository;
+    @Autowired
+    private SecretKey secretKey;
 
     public User signUp(String email, String password) {
         Optional<User> optionalUser = userRepository.findByEmail(email);
@@ -55,11 +60,9 @@ public class AuthService {
         HashMap<String, Object> claims = new HashMap<>();
         claims.put("email",optionalUser.get().getEmail());
         claims.put("roles",optionalUser.get().getRoleSet());
-        claims.put("iat",new Date(System.currentTimeMillis()));
-        claims.put("expiry",new Date(System.currentTimeMillis() + 1000000));
-
-        MacAlgorithm algorithm = Jwts.SIG.HS256;
-        SecretKey secretKey = algorithm.key().build();
+        Long currentTimeInMillis = System.currentTimeMillis();
+        claims.put("iat",currentTimeInMillis);
+        claims.put("expiry", (currentTimeInMillis + 1000000));
 
         String token = Jwts.builder().claims(claims).signWith(secretKey).compact();
 
@@ -74,5 +77,36 @@ public class AuthService {
         sessionRepository.save(session);
 
         return new Pair(headers,optionalUser.get());
+    }
+
+    public boolean validateToken(String token, Long userId){
+        System.out.println("User service values: " + token + "  " + userId);
+
+        Optional<Session> session = sessionRepository.findByTokenAndUser_Id(token,userId);
+
+        if(session.isEmpty()){
+            System.out.println("User or session token not found");
+            return false;
+        }
+
+        JwtParser jwtParser = Jwts.parser().verifyWith(secretKey).build();
+        Claims claims = jwtParser.parseSignedClaims(token).getPayload();
+
+        Long expiry = (Long)claims.get("expiry");
+        Long currentTimeInMillis = System.currentTimeMillis();
+
+        if(currentTimeInMillis > expiry){
+            System.out.println("Session expired");
+            return false;
+        }
+
+        Optional<User> user = userRepository.findById(userId);
+        String userEmail = user.get().getEmail();
+        if(!claims.get("email").equals(userEmail)){
+            System.out.println("Emails don't match");
+            return false;
+        }
+
+        return true;
     }
 }

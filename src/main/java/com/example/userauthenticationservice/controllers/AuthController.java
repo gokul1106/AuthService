@@ -1,9 +1,7 @@
 package com.example.userauthenticationservice.controllers;
 
-import com.example.userauthenticationservice.Dto.LoginRequestDto;
-import com.example.userauthenticationservice.Dto.LogoutRequestDto;
-import com.example.userauthenticationservice.Dto.SignupRequestDto;
-import com.example.userauthenticationservice.Dto.UserDto;
+import com.example.userauthenticationservice.Dto.*;
+import com.example.userauthenticationservice.Repositories.SessionRepository;
 import com.example.userauthenticationservice.Services.AuthService;
 import com.example.userauthenticationservice.model.User;
 import org.antlr.v4.runtime.misc.Pair;
@@ -21,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     @Autowired
     private AuthService authService;
+    @Autowired
+    private SessionRepository sessionRepository;
 
     @PostMapping("/signup")
     public ResponseEntity<UserDto> signUp(@RequestBody SignupRequestDto requestDto){
@@ -47,6 +47,12 @@ public class AuthController {
     @PostMapping("/logout")
     public ResponseEntity<UserDto> logout(@RequestBody LogoutRequestDto requestDto){
         return null;
+    }
+
+    @PostMapping("/validate")
+    public ResponseEntity<Boolean> validateToken(@RequestBody ValidateTokenRequestDto validateTokenRequestDto){
+        Boolean isValid = authService.validateToken(validateTokenRequestDto.getToken(), validateTokenRequestDto.getUserId());
+        return  new ResponseEntity<>(isValid, HttpStatus.ACCEPTED);
     }
 
     private UserDto getUserDto(User user){
