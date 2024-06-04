@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "2079d4da-9e8a-4812-829f-67a6124341d0",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "payments",
+					"id": "95fa2a3c-54f2-40dd-9acd-372be215df36",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"test4@test.com\",\n    \"phoneNumber\" : \"1234567890\",\n    \"amount\" : 200,\n    \"name\" : \"Test 1\",\n    \"orderId\" : \"002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/payments"
+					},
+					"response": []
+				}
+			],
+			"id": "97cc667a-68c2-47fd-bf2a-6b8a17184d1a"
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Signup",
+					"id": "5315640b-56ca-4ecb-9fc1-809042cee5ca",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"test1@test.com\",\n    \"password\" : \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/auth/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"id": "73bdc80f-2981-4f41-82f9-c5e6181849b8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"test1@test.com\",\n    \"password\" : \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Token",
+					"id": "ff35fdbc-019f-4c70-9958-3d7102442ea8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\" : 1,\n    \"token\" : \"eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W10sImV4cGlyeSI6MTcxNjk4MjUzNjQ1MSwiaWF0IjoxNzE2OTgxNTM2NDUxLCJlbWFpbCI6InRlc3QxQHRlc3QuY29tIn0.9vPRlFACkSeNVR_UBZm6eo1qbdnTsCuuugfA_KpEDGE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/auth/validate"
+					},
+					"response": []
+				}
+			],
+			"id": "73263294-ca2f-4ded-9151-b6373a47283e"
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "FakseStore - GetProductById",
+					"id": "d874b42e-fa03-4bdc-956a-7dcdc589aeff",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://fakestoreapi.com/products/1"
+					},
+					"response": []
+				},
+				{
+					"name": "FakseStore - GetAllProducts",
+					"id": "4a57b973-df6f-4759-b948-586f18fbf2cf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://fakestoreapi.com/products"
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductById",
+					"id": "f0bec6e3-97f3-46e0-add4-3f4eca05687b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/products/20"
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllProducts",
+					"id": "227344c9-7009-4ed4-aa44-2c8954cac491",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Create product",
+					"id": "76720561-356b-41ee-b532-48586bc8d879",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 100,\n        \"name\": \"Iphone 15\",\n        \"description\": \"Perfect phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/products"
+					},
+					"response": []
+				}
+			],
+			"id": "7ef86aa1-bcb6-45fe-bd34-ca7c99afc883"
+		}
+	]
+}
