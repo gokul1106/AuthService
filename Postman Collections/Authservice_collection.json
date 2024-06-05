@@ -181,6 +181,28 @@
 						"url": "localhost:8080/products"
 					},
 					"response": []
+				},
+				{
+					"name": "Replace product",
+					"id": "a07b2aa7-0784-46b2-863b-2abf356711c3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 100,\n        \"name\": \"Iphone 15\",\n        \"description\": \"Perfect phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/products"
+					},
+					"response": []
 				}
 			],
 			"id": "7ef86aa1-bcb6-45fe-bd34-ca7c99afc883"
