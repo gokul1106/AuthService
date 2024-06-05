@@ -183,6 +183,28 @@
 					"response": []
 				},
 				{
+					"name": "Search Product",
+					"id": "99331804-dca8-4421-af76-7fb66b873e9c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 2,\n        \"title\": \"Iphone 14 pro max\",\n        \"name\": \"Iphone 14 pro max\",\n        \"description\": \"Perfect all rounder phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"https://www.google.com\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/products"
+					},
+					"response": []
+				},
+				{
 					"name": "Replace product",
 					"id": "a07b2aa7-0784-46b2-863b-2abf356711c3",
 					"protocolProfileBehavior": {
