@@ -171,7 +171,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"id\": 1,\n        \"title\": \"Iphone 13 pro\",\n        \"name\": \"Iphone 13 pro\",\n        \"description\": \"Perfect phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
+							"raw": "{\n        \"id\": 2,\n        \"title\": \"Iphone 14 pro max\",\n        \"name\": \"Iphone 14 pro max\",\n        \"description\": \"Perfect all rounder phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"https://www.google.com\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
