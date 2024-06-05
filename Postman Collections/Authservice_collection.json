@@ -143,7 +143,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/products/20"
+						"url": "localhost:8080/products/1"
 					},
 					"response": []
 				},
@@ -171,7 +171,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"id\": 100,\n        \"name\": \"Iphone 15\",\n        \"description\": \"Perfect phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
+							"raw": "{\n        \"id\": 1,\n        \"title\": \"Iphone 13 pro\",\n        \"name\": \"Iphone 13 pro\",\n        \"description\": \"Perfect phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -189,18 +189,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"id\": 100,\n        \"name\": \"Iphone 15\",\n        \"description\": \"Perfect phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
+							"raw": "{\n        \"id\": 1,\n        \"title\": \"Iphone 15\",\n        \"name\": \"Iphone 15\",\n        \"description\": \"Perfect phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/products"
+						"url": "localhost:8080/products/1"
 					},
 					"response": []
 				}
