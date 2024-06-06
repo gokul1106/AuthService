@@ -148,6 +148,19 @@
 					"response": []
 				},
 				{
+					"name": "Get Product Details",
+					"id": "a3993668-3551-4383-b796-438feb8ab7b9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/products/1"
+					},
+					"response": []
+				},
+				{
 					"name": "GetAllProducts",
 					"id": "227344c9-7009-4ed4-aa44-2c8954cac491",
 					"protocolProfileBehavior": {
