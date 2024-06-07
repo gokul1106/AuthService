@@ -1,10 +1,14 @@
 package com.example.userauthenticationservice.Services;
 
+import com.example.userauthenticationservice.Dto.EmailDto;
 import com.example.userauthenticationservice.Repositories.SessionRepository;
 import com.example.userauthenticationservice.Repositories.UserRepository;
+import com.example.userauthenticationservice.client.KafkaProducerClient;
 import com.example.userauthenticationservice.model.Session;
 import com.example.userauthenticationservice.model.SessionState;
 import com.example.userauthenticationservice.model.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.cj.log.Log;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
@@ -35,6 +39,10 @@ public class AuthService {
     private SessionRepository sessionRepository;
     @Autowired
     private SecretKey secretKey;
+    @Autowired
+    private KafkaProducerClient kafkaProducerClient;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     public User signUp(String email, String password) {
         Optional<User> optionalUser = userRepository.findByEmail(email);
@@ -45,6 +53,17 @@ public class AuthService {
         user.setEmail(email);
         user.setPassword(bCryptPasswordEncoder.encode(password));
         userRepository.save(user);
+
+        EmailDto emailDto = new EmailDto();
+        emailDto.setTo(user.getEmail());
+        emailDto.setFrom("thats.right.00000@gmail.com");
+        emailDto.setSubject("User Registration done successfully");
+        emailDto.setBody("Welcome!! Your user is registered successfully.");
+        try {
+            kafkaProducerClient.sendMessage("sendMail",objectMapper.writeValueAsString(emailDto));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
         return user;
     }
 
