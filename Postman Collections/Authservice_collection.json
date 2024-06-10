@@ -47,14 +47,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"test1@test.com\",\n    \"password\" : \"12345\"\n}",
+							"raw": "{\n    \"email\" : \"admin\",\n    \"password\" : \"12345\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/auth/signup"
+						"url": "localhost:9000/auth/signup"
 					},
 					"response": []
 				},
@@ -69,14 +69,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"test1@test.com\",\n    \"password\" : \"12345\"\n}",
+							"raw": "{\n    \"email\" : \"admin\",\n    \"password\" : \"12345\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/auth/login"
+						"url": "localhost:9000/auth/login"
 					},
 					"response": []
 				},
@@ -156,7 +156,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/products/1"
+						"url": "localhost:8080/products/2/3"
 					},
 					"response": []
 				},
@@ -184,7 +184,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"id\": 2,\n        \"title\": \"Iphone 14 pro max\",\n        \"name\": \"Iphone 14 pro max\",\n        \"description\": \"Perfect all rounder phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"https://www.google.com\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
+							"raw": "{\n        \"id\": 3,\n        \"title\": \"Iphone 15 pro max\",\n        \"name\": \"Iphone 15 pro max\",\n        \"description\": \"Excellent all rounder phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"https://www.google.com\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -206,14 +206,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"id\": 2,\n        \"title\": \"Iphone 14 pro max\",\n        \"name\": \"Iphone 14 pro max\",\n        \"description\": \"Perfect all rounder phone\",\n        \"price\": 1000.00,\n        \"imageUrl\": \"https://www.google.com\",\n        \"category\": {\n            \"id\": 1,\n            \"createdAt\": null,\n            \"lastUpdatedAt\": null,\n            \"status\": null,\n            \"name\": \"Electronics\",\n            \"description\": \"Mobile\"\n        }\n    }",
+							"raw": "{\n    \"query\": \"Iphone\",\n    \"pageNumber\": 1,\n    \"pageSize\": 2,\n    \"sortParamList\":[\n        {\n            \"paramName\":\"name\",\n            \"sortType\": \"ASC\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/products"
+						"url": "localhost:8080/search"
 					},
 					"response": []
 				},
